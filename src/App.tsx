@@ -44,10 +44,9 @@ const ShowCountry = (props: icounties) => {
         <h5>
           AltSpellings :
           {props.altSpellings?.map(
-            // show altSpellings if it is not undefined with a comma between them 
-            (altSpellings) => altSpellings +  
-            // if it is the last element of the array, don't add a comma
-            (props.altSpellings?.indexOf(altSpellings) === Number(props.altSpellings?.length) - 1 ? "" : ", ")
+            (altSpelling) =>
+              altSpelling +
+              (props.altSpellings?.indexOf(altSpelling) === Number(props.altSpellings?.length) - 1 ? "" : ", ")
           )}
         </h5>
       </div>
