@@ -7,6 +7,10 @@ interface icounties {
   population: number;
   region?: string;
   altSpellings?: string[];
+  flags: {
+    svg: string;
+    png: string;
+  };
 }
 
 function App() {
@@ -16,7 +20,6 @@ function App() {
       .then((res) => res.json())
       .then((data) => setCountries(data));
   }, []);
-  console.log(countries);
 
   return (
     <div className="App">
@@ -27,6 +30,7 @@ function App() {
           region={country.region}
           capital={country.capital}
           population={country.population}
+          flags={country.flags}
         ></ShowCountry>
       ))}
     </div>
@@ -46,9 +50,19 @@ const ShowCountry = (props: icounties) => {
           {props.altSpellings?.map(
             (altSpelling) =>
               altSpelling +
-              (props.altSpellings?.indexOf(altSpelling) === Number(props.altSpellings?.length) - 1 ? "" : ", ")
+              (props.altSpellings?.indexOf(altSpelling) ===
+              Number(props.altSpellings?.length) - 1
+                ? ""
+                : ", ")
           )}
         </h5>
+        <img
+          style={{
+            width: "350px",
+          }}
+          src={props.flags?.svg ? props.flags?.svg : props.flags?.png}
+          alt={props.name}
+        />
       </div>
     </>
   );
