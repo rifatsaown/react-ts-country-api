@@ -5,7 +5,8 @@ interface icounties {
   name: string;
   capital: string;
   population: number;
-  region: string;
+  region?: string;
+  altSpellings?: string[];
 }
 
 function App() {
@@ -20,14 +21,24 @@ function App() {
   return (
     <div className="App">
       {
-        countries.map((country:icounties) => <h1>{country.name}</h1>)
+        countries.map((country:icounties) => <ShowCountry name={country.name} altSpellings={country.altSpellings} region={country.region} capital={country.capital} population={country.population}></ShowCountry>)
       }
     </div>
   );
 }
 
 const ShowCountry = (props:icounties) => {
-
+  return (
+    <>
+    <div>
+      <h1>Name :{props.name}</h1>
+      <h2>Capital :{props.capital}</h2>
+      <h3>Popilation :{props.population}</h3>
+      <h4>Regioun :{props.region}</h4>
+      <h5>AltSpellings :{props.altSpellings}</h5>
+    </div>
+    </>
+  )
 };
 
 export default App;
