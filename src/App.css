@@ -1,3 +1,12 @@
 .App {
+  /* take 3 country eatch row */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+.countries {
+  justify-content: space-around;
+  background-color: wheat;
+  padding: 20px;
   text-align: center;
 }

@@ -23,8 +23,9 @@ function App() {
 
   return (
     <div className="App">
-      {countries.map((country: icounties) => (
+      {countries.map((country: icounties,index: number) => (
         <ShowCountry
+          key={index}
           name={country.name}
           altSpellings={country.altSpellings}
           region={country.region}
@@ -40,29 +41,30 @@ function App() {
 const ShowCountry = (props: icounties) => {
   return (
     <>
-      <div>
-        <h1>Name :{props.name}</h1>
-        <h2>Capital :{props.capital}</h2>
-        <h3>Popilation :{props.population}</h3>
-        <h4>Regioun :{props.region}</h4>
-        <h5>
-          AltSpellings :
-          {props.altSpellings?.map(
-            (altSpelling) =>
-              altSpelling +
-              (props.altSpellings?.indexOf(altSpelling) ===
-              Number(props.altSpellings?.length) - 1
-                ? ""
-                : ", ")
-          )}
-        </h5>
+      <div className="countries">
+        <div>
         <img
           style={{
-            width: "350px",
+            width: "70%",
           }}
           src={props.flags?.svg ? props.flags?.svg : props.flags?.png}
           alt={props.name}
         />
+        </div>
+        <div>
+        <h3>Name :{props.name}</h3>
+        <h3>Capital :{props.capital}</h3>
+        <p>Popilation :{props.population}</p>
+        <p>Regioun :{props.region}</p>
+        <p>
+          AltSpellings :
+          {props.altSpellings?.map(
+            (altSpelling) =>
+              altSpelling +
+              (props.altSpellings?.indexOf(altSpelling) === Number(props.altSpellings?.length) - 1 ? "" : ", ")
+          )}
+        </p>
+        </div>
       </div>
     </>
   );
